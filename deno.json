@@ -1,0 +1,6 @@
+{
+  "tasks": {
+    "run": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared --allow-write=./.input-cache ./scripts/run.ts run",
+    "submit": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared --allow-write=./.input-cache ./scripts/run.ts submit"
+  }
+}

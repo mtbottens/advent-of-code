@@ -1,10 +1,19 @@
 import { BinaryHeap } from "https://deno.land/std@0.148.0/collections/binary_heap.ts";
 
-import downloadInput from "../../utils/download-input.ts";
+export function one(input: string): number {
+  const heap = createBinaryHeap(input);
+  return heap.peek();
+}
 
-export default async function main(): BinaryHeap<number> {
-  const input = await downloadInput({day: '1', year: '2022'});
-  return createBinaryHeap(input);
+export function two(input: string): number {
+  const heap = createBinaryHeap(input);
+  let result = 0;
+
+  for (let i = 0; i < 3; i++) {
+    result += heap.pop();
+  }
+
+  return result;
 }
 
 function createBinaryHeap(input: string): BinaryHeap<number> {
