@@ -30,14 +30,19 @@ if (command === Command.Submit && !part) {
   Deno.exit(1);
 }
 
+function defaultProcessInput(input: string): string {
+  return input;
+}
+
 // Import the puzzle module
 try {
-  const {one, two} = await import(`../puzzles/${year}/${day}/answer.ts`);
+  const {one, two, processInput} = await import(`../puzzles/${year}/${day}/answer.ts`);
 
-  const input = await downloadInput({
+  const rawInput = await downloadInput({
     year,
     day,
   })
+  const input = processInput ? processInput(rawInput) : defaultProcessInput(rawInput);
 
   const result = await (part === '1' ? one(input) : two(input));
 
