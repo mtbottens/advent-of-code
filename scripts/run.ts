@@ -1,4 +1,9 @@
 import {submitAnswer, downloadInput} from '../utils/aoc-service.ts';
+import {dirname, join, posix} from 'https://deno.land/std@0.57.0/path/mod.ts';
+
+function getPath(path: string) {
+  return posix.fromFileUrl(join(dirname(import.meta.url), path));
+}
 
 try {
   // Validate input params
@@ -14,6 +19,7 @@ try {
 enum Command {
   Run = 'run',
   Submit = 'submit',
+  Init = 'init',
 }
 
 // Resolve the year and day from the command line
@@ -36,31 +42,39 @@ function defaultProcessInput(input: string): string {
 
 // Import the puzzle module
 try {
-  const {one, two, processInput} = await import(`../puzzles/${year}/${day}/answer.ts`);
-
-  const rawInput = await downloadInput({
-    year,
-    day,
-  })
-  const input = processInput ? processInput(rawInput) : defaultProcessInput(rawInput);
-
-  const result = await (part === '1' ? one(input) : two(input));
-
-  switch (command) {
-    case Command.Run:
-      console.log(result);
-      break;
-    case Command.Submit:
-      console.log(`Submitting answer ...`);
-      const response = await submitAnswer({
-        day,
-        year,
-        part,
-        answer: result,
-      });
-      console.log(`Answer submitted ${response}`);
-      break;
+  if (command === Command.Init) {
+    await Deno.mkdir(getPath(`../puzzles/${year}/${day}`), {recursive: true});
+    await Deno.copyFile(getPath(`./template/answer.ts`), getPath(`../puzzles/${year}/${day}/answer.ts`));
+    await Deno.copyFile(getPath(`./template/answer.test.ts`), getPath(`../puzzles/${year}/${day}/answer.test.ts`));
+    console.log(`Created puzzle template for ${year}/${day}`);
+  } else {
+    const {one, two, processInput} = await import(`../puzzles/${year}/${day}/answer.ts`);
+  
+    const rawInput = await downloadInput({
+      year,
+      day,
+    })
+    const input = processInput ? processInput(rawInput) : defaultProcessInput(rawInput);
+  
+    const result = await (part === '1' ? one(input) : two(input));
+  
+    switch (command) {
+      case Command.Run:
+        console.log(result);
+        break;
+      case Command.Submit:
+        console.log(`Submitting answer ...`);
+        const response = await submitAnswer({
+          day,
+          year,
+          part,
+          answer: result,
+        });
+        console.log(`Answer submitted ${response}`);
+        break;
+    }
   }
+
 } catch (err) {
   console.error(err);
   Deno.exit(1);

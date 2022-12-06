@@ -1,6 +1,7 @@
 {
   "tasks": {
     "run": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared --allow-write=./.input-cache ./scripts/run.ts run",
-    "submit": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared --allow-write=./.input-cache ./scripts/run.ts submit"
+    "submit": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared --allow-write=./.input-cache ./scripts/run.ts submit",
+    "init": "deno run --allow-net --allow-env=AOC_SESSION --allow-read=./.input-cache,./puzzles,./utils,./shared,./scripts --allow-write=./.input-cache,./puzzles ./scripts/run.ts init"
   }
 }

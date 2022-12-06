@@ -3,6 +3,10 @@
   "remote": {
     "https://deno.land/std@0.148.0/collections/_comparators.ts": "b9edf2170aaccbe11407d37e8948b6867cf68fbe5225f4cd4cdb02f174227157",
     "https://deno.land/std@0.148.0/collections/binary_heap.ts": "91c38987964d665fa9f0a978c50c15f71574221522e5df5b37070026578f56fe",
+    "https://deno.land/std@0.167.0/fmt/colors.ts": "03ad95e543d2808bc43c17a3dd29d25b43d0f16287fe562a0be89bf632454a12",
+    "https://deno.land/std@0.167.0/testing/_diff.ts": "a23e7fc2b4d8daa3e158fa06856bedf5334ce2a2831e8bf9e509717f455adb2c",
+    "https://deno.land/std@0.167.0/testing/_format.ts": "cd11136e1797791045e639e9f0f4640d5b4166148796cad37e6ef75f7d7f3832",
+    "https://deno.land/std@0.167.0/testing/asserts.ts": "51353e79437361d4b02d8e32f3fc83b22231bc8f8d4c841d86fd32b0b0afe940",
     "https://deno.land/std@0.57.0/_util/assert.ts": "e1f76e77c5ccb5a8e0dbbbe6cce3a56d2556c8cb5a9a8802fc9565af72462149",
     "https://deno.land/std@0.57.0/path/_constants.ts": "e11f32a36644e04dce243f3c1f30c02cc5d149827f48a755628176f0707cfc70",
     "https://deno.land/std@0.57.0/path/_globrex.ts": "696996deed47bd98fcab9de0034233380ead443a5cd702631151c6a71e3d21a2",
