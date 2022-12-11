@@ -2,8 +2,8 @@ import { assertEquals } from "https://deno.land/std@0.167.0/testing/asserts.ts";
 import { Knot } from "./knot.ts";
 
 Deno.test('knot affects the next knot', () => {
-  const knot = new Knot(0, 0, () => {});
-  const nextKnot = new Knot(0, 0, () => {});
+  const knot = new Knot(0, 0);
+  const nextKnot = new Knot(0, 0);
 
   knot.addNext(nextKnot);
 
